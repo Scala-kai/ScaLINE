@@ -1,6 +1,6 @@
-package com.example
+package application
 
-object Hello {
+object Scaline {
   def main(args: Array[String]): Unit = {
     println("Hello, world!")
   }
