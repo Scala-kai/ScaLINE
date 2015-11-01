@@ -27,7 +27,7 @@ trait UserControllerComponent {
       follow(to, from)
     }
 
-    def login(id: Int): Option[User] = userRepository.find(Tags.UserId(id))
+    def login(id: Int @@ UserId): Option[User] = userRepository.find(id)
 
     def findBy(id: Int @@ UserId): Option[User] = userRepository.find(id)
 
