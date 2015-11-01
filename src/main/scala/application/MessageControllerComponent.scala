@@ -12,10 +12,12 @@ trait MessageControllerComponent {
   val messageController: MessageController
 
   class MessageController {
-    def getTalk(a: Int @@ UserId, b: Int @@ UserId) = ???
 
-    def post(from: Int @@ UserId, to: Int @@ UserId, message: String) =
+    def post(from: Int @@ UserId, to: Int @@ UserId, message: String): Unit =
       messageRepository.insert(Message(from,to,message))
+
+    def getTalk(a: Int @@ UserId, b: Int @@ UserId): List[Message] =
+      messageRepository.filter(e => (e.from==a && e.to==b) || (e.from==b && e.to==a)).sortBy(_.date)
 
     def getAll: List[Message] = messageRepository.all
   }
