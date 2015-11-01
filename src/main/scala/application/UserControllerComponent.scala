@@ -14,7 +14,7 @@ trait UserControllerComponent {
   class UserController {
 
     def register(name: String, tel: String, email: String): Unit = {
-      if(!tel.matches("0\\d{1,4}-\\d{1,4}-\\d{4}") || !tel.matches("0[89]0\\d{8}")){
+      if(!tel.matches("0\\d{1,4}-\\d{1,4}-\\d{4}") && !tel.matches("0[89]0\\d{8}")){
         println("Invalid phone number...")
       }
       else if(!email.matches("[\\w.\\-]+@[\\w\\-]+\\.[\\w.\\-]+")){

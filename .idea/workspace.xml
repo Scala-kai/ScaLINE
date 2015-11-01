@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ae03951-4789-4942-aa9b-b34a58e64a1f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/application/MessageControllerComponent.scala" afterPath="$PROJECT_DIR$/src/main/scala/application/MessageControllerComponent.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/domain/support/Repository.scala" afterPath="$PROJECT_DIR$/src/main/scala/domain/support/Repository.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/domain/models/User.scala" afterPath="$PROJECT_DIR$/src/main/scala/domain/models/User.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/application/UserControllerComponent.scala" afterPath="$PROJECT_DIR$/src/main/scala/application/UserControllerComponent.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="scaline.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +36,8 @@
       <file leaf-file-name="UserControllerComponent.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/application/UserControllerComponent.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3622159">
-              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.2556818">
+              <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -752,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/application/UserControllerComponent.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3622159">
-          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.2556818">
+          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
           <folding />
         </state>
       </provider>
