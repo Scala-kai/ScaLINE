@@ -20,10 +20,10 @@ trait UserControllerComponent {
       else if(!email.matches("[\\w.\\-]+@[\\w\\-]+\\.[\\w.\\-]+")){
         println("Invalid email address...")
       }
-      else if(userRepository.find(_.phoneNumber == tel).isEmpty){
+      else if(userRepository.find(_.phoneNumber == tel).isDefined){
         println("This phone number is already registered.")
       }
-      else if(userRepository.find(_.email == email).isEmpty){
+      else if(userRepository.find(_.email == email).isDefined){
         println("This email address is already registered.")
       }
       else {
