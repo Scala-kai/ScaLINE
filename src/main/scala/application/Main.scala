@@ -1,8 +1,8 @@
 package application
 
-import domain.models.User
+import domain.models.{Friend, User}
 import domain.support.Tags
-
+import java.io.PrintWriter
 import scala.io.StdIn.readLine
 
 object StringUtils {
@@ -24,6 +24,7 @@ object Main {
     val lines = Iterator.continually(readLine()).takeWhile(_ != null)
 
     for((line, lineNum) <- lines.zipWithIndex) {
+      println("Please input a command:")
       val a = line.split(' ')
       a(0) match {
         case "login" => {
@@ -84,6 +85,15 @@ object Main {
           userController.getAll.foreach(println)
         }
         case "log" => {
+          println("Please input the filename:")
+          val filename = readLine()
+          val file = new PrintWriter(filename)
+          val allUser = userController.getAll
+          val allMsg = messageController.getAll
+          val allFriend: List[Friend] = allUser.foldLeft(List[Friend]())(_ ++ _.friends)
+          val allLog: List[Log] = allUser.map(_.formalize) ++ allMsg.map(_.formalize) ++ allFriend.map(_.formalize)
+          allLog.foreach(log => file.write(log.toString))
+          file.close()
           println("log")
         }
         case _ => println("invalid...")
