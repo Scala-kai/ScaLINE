@@ -5,7 +5,7 @@ import application.Loggable
 import scalaz._
 
 trait Entity[ID <: Identifier] extends Loggable {
-  val id: Option[Long] @@ ID
+  val id: Int @@ ID
 
   override final def hashCode: Int = 31 * id.##
 

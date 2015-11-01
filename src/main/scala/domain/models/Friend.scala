@@ -13,5 +13,5 @@ case class Friend(friendId: Int @@ UserId, date: Date) extends Loggable {
 }
 
 object Friend{
-  def apply(friendId: Int @@ UserId) = Friend(friendId, new Date)
+  def apply(friendId: Int @@ UserId): Friend = Friend(friendId, new Date)
 }
