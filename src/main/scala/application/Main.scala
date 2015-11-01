@@ -5,13 +5,6 @@ import domain.support.Tags
 import java.io.PrintWriter
 import scala.io.StdIn.readLine
 
-object StringUtils {
-  implicit class StringImprovements(val s: String) {
-    import scala.util.control.Exception._
-    def toIntOpt = catching(classOf[NumberFormatException]) opt s.toInt
-  }
-}
-
 object Main {
   import StringUtils._
 
@@ -22,15 +15,13 @@ object Main {
 
   def main(args: Array[String]): Unit = {
     val lines = Iterator.continually(readLine()).takeWhile(_ != null)
-
+    println("Please input a command:")
     for((line, lineNum) <- lines.zipWithIndex) {
-      println("Please input a command:")
-      val a = line.split(' ')
-      a(0) match {
+      line.split(' ')(0) match {
         case "login" => {
           println("Please input the login user id:")
-          val id: Option[Int] = readLine().toIntOpt
-          loginUser = userController.login(Tags.UserId(id.getOrElse(-1)))
+          val id = readLine().toUserId
+          loginUser = userController.login(id)
           if(loginUser.isEmpty)println("The user id is not exists.")
           else println(s"You logged in $loginUser")
         }
@@ -65,7 +56,7 @@ object Main {
           if(loginUser.isEmpty)println("Please login.")
           else {
             println("Please input the target ID")
-            val targetId = Tags.UserId(readLine().toIntOpt.getOrElse(-1))
+            val targetId = readLine().toUserId
             if(userController.findBy(targetId).isEmpty)println("The user id is not exists.")
             else userController.makeFriend(loginUser.getOrElse(User.empty).id, targetId)
           }
@@ -74,7 +65,7 @@ object Main {
           if(loginUser.isEmpty)println("Please login.")
           else {
             println("Please input the target ID:")
-            val to = Tags.UserId(readLine().toIntOpt.getOrElse(-1))
+            val to = readLine().toUserId
             println("Please input a message without any blanks:")
             val msg = readLine()
             messageController.post(loginUser.getOrElse(User.empty).id, to, msg)
@@ -98,7 +89,15 @@ object Main {
         }
         case _ => println("invalid...")
       }
+      println("Please input a command:")
     }
   }
+}
 
+object StringUtils {
+  implicit class StringImprovements(val s: String) {
+    import scala.util.control.Exception._
+    def toIntOpt = catching(classOf[NumberFormatException]) opt s.toInt
+    def toUserId = Tags.UserId((catching(classOf[NumberFormatException]) opt s.toInt).getOrElse(-1))
+  }
 }
