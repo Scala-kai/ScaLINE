@@ -22,6 +22,8 @@ case class User(
 
   def makeFriend(to: Int @@ UserId): User = copy(friends = Friend(to)::friends)
 
+  def isFriend(to: Int @@ UserId): Boolean = friends.exists(_.friendId == to)
+
   def read(msg: Message): Message = msg.copy(isRead = true)
 }
 

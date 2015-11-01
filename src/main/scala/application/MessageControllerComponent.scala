@@ -14,8 +14,9 @@ trait MessageControllerComponent {
   class MessageController {
     def getTalk(a: Int @@ UserId, b: Int @@ UserId) = ???
 
-    def post(from: Int @@ UserId, to: Int @@ UserId, message: String) = ???
+    def post(from: Int @@ UserId, to: Int @@ UserId, message: String) =
+      messageRepository.insert(Message(from,to,message))
 
-    def getAll: List[Message] = ???
+    def getAll: List[Message] = messageRepository.all
   }
 }

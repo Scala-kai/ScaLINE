@@ -14,6 +14,8 @@ trait Repository[ID <: Identifier, E <: Entity[ID]]{
 
   def find(id: Int @@ ID): Option[E] = set.find(_.id == id)
 
+  def find(p: E => Boolean): Option[E] = set.find(p)
+
   def delete(e: E): Unit = set -= e
 
   def delete(id: Int @@ ID): Unit = set.retain(_.id == id)
@@ -22,4 +24,6 @@ trait Repository[ID <: Identifier, E <: Entity[ID]]{
     delete(e)
     insert(e)
   }
+
+  def all: List[E] = set.toList
 }
