@@ -34,4 +34,6 @@ object User {
     autoInc+=1
     User(Tags.UserId(autoInc),name,phoneNumber,email,new Date(),List[Friend]())
   }
+
+  def empty: User = User(Tags.UserId(-1),"","","",new Date(),List())
 }

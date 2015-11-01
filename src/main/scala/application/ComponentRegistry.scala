@@ -8,7 +8,8 @@ UserRepositoryComponent with
 MessageControllerComponent with
 MessageRepositoryComponent {
   val userController = new UserController
-  val userRepository = new UserRepository
   val messageController = new MessageController
+
+  val userRepository = new UserRepository
   val messageRepository = new MessageRepository
 }
