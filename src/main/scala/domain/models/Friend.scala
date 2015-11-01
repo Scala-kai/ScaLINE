@@ -11,3 +11,7 @@ case class Friend(friendId: Int @@ UserId, date: Date) extends Loggable {
   def formalize: Log = Log(date, s"$friendId")
   def formalize(userId: Int @@ UserId): Log = Log(date, s"$userId became a friend $friendId")
 }
+
+object Friend{
+  def apply(friendId: Int @@ UserId) = Friend(friendId, new Date)
+}
