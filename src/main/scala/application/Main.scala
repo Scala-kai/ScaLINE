@@ -105,6 +105,15 @@ object Main {
           file.close()
           println("log")
         }
+        case "?" => {
+          println("register")
+          println("login")
+          println("list")
+          println("makeFriend")
+          println("talk")
+          println("history")
+          println("log")
+        }
         case _ => println("invalid...")
       }
       println("Please input a command:")
