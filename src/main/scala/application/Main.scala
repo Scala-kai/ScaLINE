@@ -53,27 +53,45 @@ object Main {
           }
         }
         case "makeFriend" => {
-          if(loginUser.isEmpty)println("Please login.")
-          else {
-            println("Please input the target ID")
-            val targetId = readLine().toUserId
-            if(userController.findBy(targetId).isEmpty)println("The user id is not exists.")
-            else userController.makeFriend(loginUser.getOrElse(User.empty).id, targetId)
+          loginUser match {
+            case Some(user: User) => {
+              println("Please input the target ID")
+              val targetId = readLine().toUserId
+              if (userController.findBy(targetId).isEmpty) println("The user id is not exists.")
+              else userController.makeFriend(user.id, targetId)
+            }
+            case _ => println("Please Login")
           }
         }
         case "talk" => {
-          if(loginUser.isEmpty)println("Please login.")
-          else {
-            println("Please input the target ID:")
-            val to = readLine().toUserId
-            println("Please input a message without any blanks:")
-            val msg = readLine()
-            messageController.post(loginUser.getOrElse(User.empty).id, to, msg)
+          loginUser match {
+            case Some(user: User) => {
+              println("Please input the target ID:")
+              val to = readLine().toUserId
+              println("Please input a message:")
+              val msg = readLine()
+              messageController.post(user.id, to, msg)
+            }
+            case _ => println("Please Login")
           }
         }
         case "list" => {
           println("all user:")
           userController.getAll.foreach(println)
+        }
+        case "history" => {
+          loginUser match {
+            case Some(user: User) => {
+              println("Please Input a target id:")
+              val targetId = readLine().toUserId
+              messageController.getTalk(user.id, targetId)
+                .foreach { msg =>
+                messageController.update(user.read(msg))
+                println(msg)
+              }
+            }
+            case _ => println("Please Login")
+          }
         }
         case "log" => {
           println("Please input the filename:")

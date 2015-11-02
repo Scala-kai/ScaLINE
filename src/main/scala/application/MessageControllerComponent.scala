@@ -16,6 +16,8 @@ trait MessageControllerComponent {
     def post(from: Int @@ UserId, to: Int @@ UserId, message: String): Unit =
       messageRepository.insert(Message(from,to,message))
 
+    def update(message: Message): Unit = messageRepository.update(message)
+
     def getTalk(a: Int @@ UserId, b: Int @@ UserId): List[Message] =
       messageRepository.filter(e => (e.from==a && e.to==b) || (e.from==b && e.to==a)).sortBy(_.date)
 
